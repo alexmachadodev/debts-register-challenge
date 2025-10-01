@@ -1,0 +1,12 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.OpenApi.Models;
+global using MediatR;
+global using Serilog;
+global using DebtsRegisterChallenger.Api.Configuration;
+global using DebtsRegisterChallenger.Api.Endpoints;
+global using DebtsRegisterChallenger.Application.Abstractions;
+global using DebtsRegisterChallenger.Application.Features.Debts.Commands;
+global using DebtsRegisterChallenger.Application.Features.Debts.Queries;
+global using DebtsRegisterChallenger.Infrastructure.Persistence.Repositories;
+global using DebtsRegisterChallenger.Infrastructure.Persistence;
+global using DebtsRegisterChallenger.Infrastructure.Services;

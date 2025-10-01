@@ -1,0 +1,70 @@
+<mat-toolbar color="primary">
+  <span>Nova Dívida</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="debtForm" (ngSubmit)="onSubmit()" class="debt-form">
+      <div class="form-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Número do título</mat-label>
+          <input matInput formControlName="titleNumber">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nome do devedor</mat-label>
+          <input matInput formControlName="debtorName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>CPF do devedor</mat-label>
+          <input matInput formControlName="debtorCpf">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill">
+          <mat-label>% de juros</mat-label>
+          <input matInput type="number" formControlName="interestPercent">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>% de multa</mat-label>
+          <input matInput type="number" formControlName="finePercent">
+        </mat-form-field>
+      </div>
+
+      <div class="installments-section">
+        <h3>Parcelas</h3>
+        <button mat-raised-button color="primary" type="button" (click)="addInstallment()">Adicionar</button>
+      </div>
+
+      <div formArrayName="installments">
+        <div *ngFor="let installment of installments.controls; let i=index" [formGroupName]="i" class="installment-row">
+          <mat-form-field appearance="fill">
+            <mat-label>Número da parcela</mat-label>
+            <input matInput type="number" formControlName="installmentNumber">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Data de vencimento</mat-label>
+            <input matInput type="date" formControlName="dueDate">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Valor da parcela</mat-label>
+            <input matInput type="number" formControlName="amount">
+          </mat-form-field>
+
+          <button mat-icon-button color="warn" type="button" (click)="removeInstallment(i)">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!debtForm.valid">Salvar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

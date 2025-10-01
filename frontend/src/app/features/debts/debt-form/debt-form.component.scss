@@ -1,0 +1,27 @@
+.debt-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.installments-section {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.installment-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+}
