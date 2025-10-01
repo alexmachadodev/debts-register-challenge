@@ -40,20 +40,15 @@ public class Debt
         return originalValue + fine + totalInterest;
     }
 
-    //Verifica se a dívida tem alguma parcela em atraso.
     private bool IsOverdue(DateTime today)
         => Installments.Any(i => i.DueDate.Date < today.Date);
 
-    // Retorna uma coleção de todas as parcelas vencidas.
     private IEnumerable<Installment> GetOverdueInstallments(DateTime today)
         => Installments.Where(i => i.DueDate.Date < today.Date);
 
-    // Calcula o valor da multa com base no valor original da dívida.
-    // A multa é aplicada uma única vez.
     private decimal CalculateFine(decimal originalValue)
         => originalValue * (FinePercent / 100);
 
-    //Calcula o valor total dos juros, somando os juros de cada parcela vencida.
     private decimal CalculateTotalInterest(DateTime today)
     {
         var dailyInterestRate = (InterestPercent / 100) / DaysInMonthForInterestCalculation;
